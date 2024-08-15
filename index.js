@@ -16,6 +16,8 @@ mongoose
   .catch(() => console.log("MongoDB is not connected"));
 
 app.use("/", Routes);
+app.use(express.urlencoded({ extended: true }));
+app.use("/images", express.static("./files"));
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`${PORT} has been listening`));
