@@ -31,7 +31,7 @@ const productSchema = new mongoose.Schema(
     categoryId: {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: "Category",
+      ref: "category",
     },
     adminId: {
       type: Schema.Types.ObjectId,
@@ -51,7 +51,7 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
     info: {
-      type: String,
+      type: Array,
       required: false,
       default: [],
     },
