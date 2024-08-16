@@ -10,8 +10,7 @@ class ProductsController {
           { path: "adminId", select: ["fname", "username"] },
           { path: "categoryId", select: ["title"] },
         ])
-        .sort({ createdAt: -1 })
-        .deleteMany();
+        .sort({ createdAt: -1 });
       if (!products) {
         return res.status(500).json({
           msg: "Products is not defined",
