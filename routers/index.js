@@ -25,6 +25,7 @@ router.patch("/api/update/category/:id", CategoryController.update);
 //products
 router.get("/api/products", ProductsController.get);
 router.get("/api/products/category/:id", ProductsController.getCategory);
+router.delete("/api/delete/product:id", ProductsController.getCategory);
 router.post(
   "/api/create/product",
   [auth, upload.array("photos")],
