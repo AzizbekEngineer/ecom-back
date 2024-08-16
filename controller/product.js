@@ -101,6 +101,23 @@ class ProductsController {
       });
     }
   }
+  async delete(req, res) {
+    try {
+      const { id } = req.params;
+      await Products.findByIdAndDelete(id, req.body);
+      res.status(200).json({
+        msg: "Delete products",
+        variant: "success",
+        payload: null,
+      });
+    } catch {
+      res.status(500).json({
+        msg: "Server error",
+        variant: "error",
+        payload: null,
+      });
+    }
+  }
 }
 
 export default new ProductsController();
