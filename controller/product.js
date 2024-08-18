@@ -31,7 +31,6 @@ class ProductsController {
       });
     }
   }
-
   async getCategory(req, res) {
     try {
       const { categoryId } = req.params;
@@ -59,7 +58,6 @@ class ProductsController {
       });
     }
   }
-
   async create(req, res) {
     try {
       const urls = req.files

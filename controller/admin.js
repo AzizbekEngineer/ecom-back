@@ -173,10 +173,10 @@ class AdminsController {
 
     const token = jwt.sign(
       { _id: admin._id, role: admin.role, isActive: admin.isActive },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: "24h",
-      }
+      process.env.JWT_SECRET
+      // {
+      //   expiresIn: "24h",
+      // }
     );
 
     res.status(200).json({
