@@ -115,6 +115,23 @@ class ProductsController {
       });
     }
   }
+  async getProduct(req, res) {
+    try {
+      const { id } = req.params;
+      let product = await Products.findById(id);
+      res.status(200).json({
+        msg: "Product registered successfully",
+        variant: "success",
+        payload: product,
+      });
+    } catch {
+      res.status(500).json({
+        msg: err.message,
+        variant: "error",
+        payload: null,
+      });
+    }
+  }
 }
 
 export default new ProductsController();
