@@ -1,6 +1,8 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { Products, validateProduct } from "../models/productSchema.js";
+import fs from "fs";
+import path from "path";
 
 class ProductsController {
   async get(req, res) {
@@ -101,7 +103,16 @@ class ProductsController {
   async delete(req, res) {
     try {
       const { id } = req.params;
-      await Products.findByIdAndDelete(id, req.body);
+      let product = await Products.findById(id);
+      console.log(product);
+
+      product?.urls?.forEach((el) => {
+        let name = el.split("/").slice(-1)[0];
+        const filePath = path.join("files", name);
+        fs.unlinkSync(filePath);
+      });
+
+      await Products.findByIdAndDelete(id);
       res.status(200).json({
         msg: "Delete products",
         variant: "success",
